@@ -2,11 +2,62 @@
 
 # SCRIPT: QUIZ MATEMÁTICO EN BASH (Bourne Again Shell)
 
-# Funciones:
+# FUNCIONES:
+
+# Función reutilizable para realizar una pregunta al usuario
+# y validar su respuesta (permite solo tres intentos).
+preguntar()
+{
+    typeset pregunta respuesta
+    typeset -i resultado intento
+
+    intento=1
+    pregunta="$1"
+    resultado=$2
+
+    while (( intento <= 3 ))
+    do
+        echo -n "$pregunta "
+        read respuesta
+
+        if (( respuesta == resultado ))
+        then
+            echo "¡Correcto! Bien hecho."
+            return
+        else
+            if (( intento < 3 ))
+            then
+                echo "Incorrecto. Inténtalo de nuevo."
+            fi
+        fi
+        (( intento = intento + 1 ))
+    done
+
+    echo "Se acabaron los intentos. La respuesta correcta era $resultado."
+}
+
+# Problemas de suma:
+suma()
+{
+    typeset -i a b resultado
+    
+    (( a = RANDOM % 101 ))
+    (( b = RANDOM % 101 ))
+    (( resultado = a + b ))
+    
+    preguntar "¿Cuánto es $a + $b?" $resultado
+}
+
+# Problemas de resta:
 
 
+# Problemas de multiplicación:
 
-# Cuerpo principal del programa:
+
+# Problemas de división:
+
+
+# CUERPO PRINCIPAL DEL PROGRAMA:
 
 typeset opcion
 
@@ -24,7 +75,7 @@ do
 
     case $opcion in
         1)
-            echo "Falta por implementar...";;
+            suma;;
         2)
             echo "Falta por implementar...";;
         3)
