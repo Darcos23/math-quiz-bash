@@ -84,6 +84,17 @@ multiplicacion()
 
 # Problemas de división:
 
+division()
+{
+    typeset -i a b resultado
+
+    (( b = RANDOM % 10 + 1 )) 
+    (( resultado = RANDOM % 100 + 1 ))
+    (( a = resultado * b )) 
+
+    preguntar "¿Cuánto es $a / $b?" $resultado
+}
+
 
 # CUERPO PRINCIPAL DEL PROGRAMA:
 
@@ -109,7 +120,7 @@ do
         3)
             multiplicacion;;
         4)
-            echo "Falta por implementar...";;
+            division;;
         9)
             echo "¡Hasta luego!"
             break;;
