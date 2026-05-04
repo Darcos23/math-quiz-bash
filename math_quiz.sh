@@ -50,9 +50,37 @@ suma()
 
 # Problemas de resta:
 
+resta()
+{
+    typeset -i a b resultado temp
+
+    (( a = RANDOM % 101 ))
+    (( b = RANDOM % 101 ))
+
+    # asegurar resultado positivo
+    if (( a < b )); then
+        temp=$a
+        a=$b
+        b=$temp
+    fi
+
+    (( resultado = a - b ))
+
+    preguntar "¿Cuánto es $a - $b?" $resultado
+}
 
 # Problemas de multiplicación:
 
+multiplicacion()
+{
+    typeset -i a b resultado
+
+    (( a = RANDOM % 100 + 1 ))
+    (( b = RANDOM % 10 + 1 ))
+    (( resultado = a * b ))
+
+    preguntar "¿Cuánto es $a * $b?" $resultado
+}
 
 # Problemas de división:
 
@@ -77,9 +105,9 @@ do
         1)
             suma;;
         2)
-            echo "Falta por implementar...";;
+            resta;;
         3)
-            echo "Falta por implementar...";;
+            multiplicacion;;
         4)
             echo "Falta por implementar...";;
         9)
