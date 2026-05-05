@@ -6,6 +6,7 @@
 
 # Función reutilizable para realizar una pregunta al usuario
 # y validar su respuesta (permite solo tres intentos).
+
 preguntar()
 {
     typeset pregunta respuesta
@@ -37,6 +38,7 @@ preguntar()
 }
 
 # Problemas de suma:
+
 suma()
 {
     typeset -i a b resultado
@@ -57,7 +59,7 @@ resta()
     (( a = RANDOM % 101 ))
     (( b = RANDOM % 101 ))
 
-    # asegurar resultado positivo
+    # Asegurar resultado positivo
     if (( a < b )); then
         temp=$a
         a=$b
@@ -88,13 +90,13 @@ division()
 {
     typeset -i a b resultado
 
-    (( b = RANDOM % 10 + 1 )) 
-    (( resultado = RANDOM % 100 + 1 ))
-    (( a = resultado * b )) 
+    (( a = RANDOM % 20 + 1 ))
+    (( b = RANDOM % 10 + 1 ))
+    (( resultado = a ))
+    (( a = a * b )) 
 
     preguntar "¿Cuánto es $a / $b?" $resultado
 }
-
 
 # CUERPO PRINCIPAL DEL PROGRAMA:
 
